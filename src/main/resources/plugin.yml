@@ -1,0 +1,15 @@
+name: iRestart
+version: ${version}
+main: com.mrrezik.irestart.IRestartPlugin
+api-version: 1.17
+authors:
+  - MrRezik
+permissions:
+  irestart.admin:
+    description: Доступ к управлению iRestart
+    default: op
+
+commands:
+  irestart:
+    description: Главная команда плагина iRestart
+    permission: irestart.admin

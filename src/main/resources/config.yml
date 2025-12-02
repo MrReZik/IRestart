@@ -1,0 +1,85 @@
+settings:
+  # Время рестарта (HH:mm)
+  time: "00:00"
+  # Часовой пояс
+  timezone: "Europe/Kiev"
+  # Действие: RESTART или RELOAD
+  type: "RESTART"
+  # Включить отсчет в Actionbar (над инвентарем)
+  actionbar-timer: true
+
+# Настройки звуков (Звук, Громкость, Питч). Поставь 'NONE' чтобы отключить.
+sounds:
+  countdown: "BLOCK_NOTE_BLOCK_PLING, 1.0, 2.0"
+  restart-now: "ENTITY_ENDER_DRAGON_GROWL, 1.0, 1.0"
+
+# Список популярных таймзон для автозаполнения
+timezones:
+  - "Europe/Kiev"
+  - "Europe/Moscow"
+  - "UTC"
+  - "Europe/London"
+  - "Europe/Berlin"
+  - "America/New_York"
+  - "Asia/Tokyo"
+
+# Настройки уведомлений
+warnings:
+  # За сколько секунд до рестарта отправлять уведомления
+  times: [600, 300, 60, 30, 10, 5, 4, 3, 2, 1]
+
+  title:
+    enabled: true
+    text: "&#ff0000⚠ РЕСТАРТ ⚠"
+    subtext: "&#ffca00Сервер перезагрузится через %time% сек"
+    fade-in: 10
+    stay: 40
+    fade-out: 10
+
+  chat:
+    enabled: true
+    message:
+      - ""
+      - " &c&lВНИМАНИЕ!"
+      - " &fДо планового рестарта осталось: &#00ff00%time% сек."
+      - " &7Рекомендуем выйти из боя и сохранить вещи."
+      - ""
+
+# Действия перед рестартом
+actions:
+  # Команды, которые выполнятся от имени КОНСОЛИ перед самым рестартом/киком
+  # Это позволяет снять режим боя в ЛЮБОМ плагине (PvPManager, CombatLogX, AntiRelog, DeluxeCombat и т.д.)
+  pre-restart-commands:
+    - "save-all"
+    - "pvpmanager untagall"      # PvPManager
+    - "ar untagall"              # AntiRelog
+    - "clx untag all"            # CombatLogX
+    - "dc untag all"             # DeluxeCombat
+    - "broadcast &cСервер перезагружается, спасайтесь!"
+
+  # Настройки кика игроков
+  kick:
+    enabled: true
+    message: |
+      &#ff0000&lСЕРВЕР ПЕРЕЗАГРУЖАЕТСЯ
+      
+      &fПожалуйста, подождите пару минут.
+      &7Время рестарта: &b%time%
+      
+      &eМы скоро вернемся!
+
+  # Команда для RELOAD (если type: RELOAD)
+  reload-cmd: "plugman reload all"
+
+messages:
+  prefix: "&8[&biRestart&8] &r"
+  no-perm: "&cУ вас нет прав!"
+  reloaded: "&aКонфигурация перезагружена!"
+  help:
+    - "&8&m---------------------------------"
+    - "&b/irestart type <restart/reload> &7- Сменить режим"
+    - "&b/irestart time set <HH:mm> &7- Установить время"
+    - "&b/irestart timezone <id> &7- Часовой пояс"
+    - "&b/irestart now &7- Рестарт прямо сейчас"
+    - "&b/irestart reload &7- Перезагрузить конфиг"
+    - "&8&m---------------------------------"
